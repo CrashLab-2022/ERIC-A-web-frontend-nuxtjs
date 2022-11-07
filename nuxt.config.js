@@ -42,6 +42,6 @@ module.exports = {
   },
   modules: ['@nuxtjs/axios'],
   axios: {
-    host: 'eric-a-server.herokuapp.com',
+    baseURL: 'eric-a-baegayeon.koyeb.app/',
   },
 };
