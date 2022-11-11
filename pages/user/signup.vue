@@ -46,7 +46,7 @@ export default {
     methods: {
         async checkPhoneNumber() {
             try {
-                let response = await this.$axios.get(`https://eric-a-baegayeon.koyeb.app/user/signup/checkphone/${this.phoneNumber}`)
+                let response = await this.$axios.get(`user/signup/checkphone/${this.phoneNumber}`)
                 console.log(response)
                 if (response.data.res == true) {
                     alert('사용 가능한 전화번호입니다.');
@@ -61,7 +61,7 @@ export default {
         },
         async isPhoneNumberAvailable() {
             try {
-                let response = await this.$axios.get(`https://eric-a-baegayeon.koyeb.app/user/signup/checkphone/${this.phoneNumber}`);
+                let response = await this.$axios.get(`user/signup/checkphone/${this.phoneNumber}`);
                 if (response.data.res == true) {
                     return 1;
                     } else {
