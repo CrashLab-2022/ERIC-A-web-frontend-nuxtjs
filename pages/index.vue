@@ -2,7 +2,7 @@
   <div>
     <h1>ERIC-A</h1>
     <div>
-      배송 로봇 ERIC-A
+      배송 로봇 ERIC-A입니다!
       <a v-if="!isLogined" href="/user/signin">사용하기 위해 로그인하기!</a>
       <a v-if="!isLogined" href="/user/signup">사용하기 위해 회원가입하기!</a>
     </div>
@@ -17,12 +17,13 @@
 export default {
   data() {
     return {
-      isLogined: true
+      isLogined: ''
     }
   },
   created() {
     this.$axios.defaults.withCredentials = true
     this.$axios.get('/user/checklogin').then(result => {
+      console.log(result.data);
       if (result.data) {
         this.isLogined = true
       } else {
@@ -44,7 +45,7 @@ export default {
       this.$axios.defaults.withCredentials = true
       let isLogined = await this.$axios.get('/user/checklogin');
       if (isLogined.data) {
-        $nuxt.$router.push('/delivery/track');
+        $nuxt.$router.push('/delivery/list');
       } else {
         alert('로그인이 필요합니다.');
       }
