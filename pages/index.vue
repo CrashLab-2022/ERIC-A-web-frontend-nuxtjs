@@ -7,6 +7,7 @@
       <a v-if="!isLogined" href="/user/signup">사용하기 위해 회원가입하기!</a>
     </div>
       <div v-if="isLogined" >{{userName}}님 반갑습니다</div>
+      <a v-if="isLogined" @click="logout">로그아웃</a>
       <div v-if="false">{{userPhoneNumber}}</div>
     <ul>
       <li @click="loginOrder">배송 접수</li>
@@ -42,6 +43,20 @@ export default {
         });
   },
   methods: {
+    async logout() {
+      this.$axios.defaults.withCredentials = true
+      await this.$axios.post('http://localhost:3001/user/signout')
+      .then(function (res) {
+        if (res.data) {
+          alert('로그아웃 되었습니다.');
+          $nuxt.$router.go();
+        } else {
+          console.log('로그아웃 실패')
+        }
+      }).catch(function (err) {
+        console.log(err);
+      });
+    },
     async loginOrder() {
       this.$axios.defaults.withCredentials = true
       let isLogined = await this.$axios.get('/user/checklogin');
