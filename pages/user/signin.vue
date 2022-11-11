@@ -30,10 +30,10 @@ export default {
                 password: this.password,
             };
             this.$axios.defaults.withCredentials = true
-            this.$axios.post('user/signin', userData)
+            this.$axios.post('/user/signin', userData)
                 .then(function (res) {
                     if (res.status == 200) {
-                        $nuxt.$router.push('/main');
+                        $nuxt.$router.push('/');
                     }
                     else {
                         alert('아이디와 비밀번호를 확인해 주세요.');

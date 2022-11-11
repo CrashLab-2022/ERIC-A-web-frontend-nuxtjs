@@ -103,7 +103,7 @@ export default {
                     console.log(res);
                     if (res.status == 200) {
                         alert('회원 가입 완료되었습니다.');
-                        $nuxt.$router.push('/main');
+                        $nuxt.$router.push('/');
                     }
                     else {
                         alert('회원 가입 실패하였습니다.');
