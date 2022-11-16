@@ -42,7 +42,8 @@ module.exports = {
   },
   modules: ['@nuxtjs/axios'],
   axios: {
-    baseURL: 'http://eric-a-baegayeon.koyeb.app:3001/',
+    // baseURL: 'http://eric-a-baegayeon.koyeb.app:3001/',
+    baseURL: 'https://genuine-salamander-326058.netlify.app',
     // baseURL: 'http://localhost:3001',
     // proxyHeaders: false,
     // credentials: false,
