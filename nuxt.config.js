@@ -40,12 +40,19 @@ module.exports = {
       }
     },
   },
-  modules: ['@nuxtjs/axios'],
+  modules: ['@nuxtjs/axios', '@nuxtjs/proxy'],
+  // modules: ['@nuxtjs/proxy'],
+
   axios: {
     // baseURL: 'http://eric-a-baegayeon.koyeb.app:3001/',
-    baseURL: 'https://genuine-salamander-326058.netlify.app',
+    // baseURL: '/api/',
+    proxy: true,
+    // baseURL: 'https://genuine-salamander-326058.netlify.app'
     // baseURL: 'http://localhost:3001',
-    // proxyHeaders: false,
-    // credentials: false,
+    // credentials: true,
+  },
+  proxy: {
+    '/api': 'https://genuine-salamander-326058.netlify.app',
+    // '/api': 'http://eric-a-baegayeon.koyeb.app:3001/',
   },
 };
