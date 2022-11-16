@@ -77,7 +77,7 @@ export default {
   methods: {
     async logout() {
       this.$axios.defaults.withCredentials = true
-      await this.$axios.post('http://localhost:3001/user/signout')
+      await this.$axios.post('/user/signout')
       .then(function (res) {
         if (res.data) {
           alert('로그아웃 되었습니다.');

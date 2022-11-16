@@ -42,6 +42,9 @@ module.exports = {
   },
   modules: ['@nuxtjs/axios'],
   axios: {
-    baseURL: 'eric-a-baegayeon.koyeb.app/',
+    baseURL: 'http://eric-a-baegayeon.koyeb.app:3001/',
+    // baseURL: 'http://localhost:3001',
+    // proxyHeaders: false,
+    // credentials: false,
   },
 };
