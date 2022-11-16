@@ -14,7 +14,10 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
-    "nuxt": "^2.0.0"
+    "@nuxtjs/proxy": "^2.1.0",
+    "nuxt": "^2.0.0",
+    "vue": "^2.6.12",
+    "vue-server-renderer": "^2.6.12"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
