@@ -1,8 +1,10 @@
 <template>
-    <div class="container">
+    <div class="login">
+        <Header />
+        <h3>로그인</h3>
         <form @submit.prevent="submitForm">
-            <div>
-                <label for="phoneNumber">id</label>
+            <div class="id">
+                <label for="phoneNumber">전화번호</label>
                 <input type="text" id="phoneNumber" v-model="phoneNumber" />
             </div>
             <div>
@@ -15,8 +17,12 @@
 </template>
 
 <script>
+import Header from '../../components/Header2';
 export default {
-    name: 'SignupForm',
+    components: {
+        Header
+    },
+    name: 'SigninForm',
     data() {
         return {
             phoneNumber: null,
@@ -47,4 +53,38 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.login input {
+    width: 190px;
+  font-size: 15px;
+  border: 0;
+  border-radius: 15px;
+  margin: 5px;
+  margin-top: 10px;
+  margin-left: 7px;
+  outline: none;
+  padding: 5px;
+  background-color: rgb(255, 255, 255);
+}
+
+.login h3 {
+    margin: 20px;
+    margin-bottom: 5px;
+}
+
+.login button {
+  margin: 15px;
+  padding: 5px 20px;
+  font-size: 15px;
+  border-radius: 10px;
+  background-color: #F0D264;
+  box-shadow: 0 6px rgba(196, 172, 83, .7);
+  text-decoration: none;
+  border-width: 0px;
+}
+
+.login button:hover {
+  box-shadow: 0 0; 
+  margin-top: 20px;
+  background-color: #D6BB59;}
+</style>
