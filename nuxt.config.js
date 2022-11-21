@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   /*
    ** Headers of the page
    */
@@ -44,15 +44,19 @@ module.exports = {
   // modules: ['@nuxtjs/proxy'],
 
   axios: {
-    // baseURL: 'http://eric-a-baegayeon.koyeb.app:3001/',
+    // baseURL: 'http://eric-a-baegayeon.koyeb.app:3001',
     // baseURL: '/api/',
-    proxy: true,
-    // baseURL: 'https://genuine-salamander-326058.netlify.app'
+    // proxy: true,
+    // baseURL: 'https://genuine-salamander-326058.netlify.app',
     // baseURL: 'http://localhost:3001',
-    // credentials: true,
+    // baseURL: 'https://eric-a-server.herokuapp.com',
+    // baseURL: 'http://35.73.220.254:3000',
+    baseURL: 'http://api.bbbae.shop:3000',
+    withCredentials: true,
+    // proxy: true,
   },
   proxy: {
-    '/api': 'https://genuine-salamander-326058.netlify.app',
+    // '/api': 'https://genuine-salamander-326058.netlify.app',
     // '/api': 'http://eric-a-baegayeon.koyeb.app:3001/',
   },
 };
