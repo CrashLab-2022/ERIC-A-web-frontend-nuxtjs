@@ -63,4 +63,5 @@ export default {
     // '/api': 'https://genuine-salamander-326058.netlify.app',
     // '/api': 'http://eric-a-baegayeon.koyeb.app:3001/',
   },
+  target: 'static',
 };
