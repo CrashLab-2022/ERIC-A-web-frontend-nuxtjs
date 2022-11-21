@@ -15,6 +15,10 @@ export default {
         name: 'description',
         content: 'Nuxt.js project',
       },
+      {
+        httpEquiv: 'Content-Security-Policy',
+        content: 'upgrade-insecure-requests',
+      },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
