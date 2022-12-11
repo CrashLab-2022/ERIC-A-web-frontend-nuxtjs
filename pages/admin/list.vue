@@ -18,7 +18,7 @@
 export default {
     data() {
         return {
-            deliveryHeader: ['😀', '접수번호', '접수일자', '이름', '품목', '현재 상태'],
+            deliveryHeader: ['😀', '접수번호', '접수일자', '배송지', '품목', '현재 상태'],
             deliveryList: []
         }
     },
@@ -33,9 +33,9 @@ export default {
                     id: value.id,
                     date: value.date,
                     // time: value.time,
-                    name: value.name,
+                    // name: value.name,
                     // phoneNumber: value.phoneNumber,
-                    // destination: value.destination,
+                    destination: value.destination,
                     item: value.item,
                     // isInPerson: value.isInPerson,
                     status: value.status
