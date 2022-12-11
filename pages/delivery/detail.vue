@@ -78,12 +78,12 @@ export default {
         });
     },
     methods: { opendoor() {
-        this.$axios.get('/control/opendoor').then(function (res) {
+        this.$axios.get(`/control/opendoor`).then(function (res) {
             console.log(res);
-            if (res.status == 200) {
+            if (res.data) {
                 alert('뚜껑을 열게요!');
             } else {
-                alert('실패했습니다.');
+                alert('뚜껑이 이미 열리고 있어요.');
             }
         }).catch(function (err) {
             alert('오류가 발생했습니다.');
