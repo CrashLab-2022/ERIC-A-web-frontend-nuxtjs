@@ -50,6 +50,7 @@ table {
 * {
   font-family: GmarketSansLight;
   text-align: center;
+  color: black;
 }
 
 h3 {
