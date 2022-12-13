@@ -100,7 +100,8 @@ export default {
                 item: this.item,
                 isInPerson: this.isInPerson,
                 userId: this.userPhoneNumber,
-                status: '출발 전'
+                status: '접수 중',
+                isAccepted: '접수 요청'
             };
             this.$axios.post('/delivery/order', userData)
             .then(function (res) {

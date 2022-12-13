@@ -19,7 +19,7 @@
     <div id="info">
         <!-- {{ status }} -->
         <p v-if="this.status == '배송 완료'">배송이 완료되었어요! <br></p>
-        <button v-else-if="this.status == '도착'" @click="opendoor">뚜껑 열기</button>
+        <button v-else-if="this.status == '배송지 도착'" @click="opendoor">뚜껑 열기</button>
         <p v-else>도착하면 뚜껑 열기 버튼이 생깁니다.<br>조금만 기다려 주세요!</p>
     </div>
     </div>
@@ -37,7 +37,7 @@ export default {
             phoneNumber: this.$route.query.phoneNumber,
             index: this.$route.query.index,
             userPhoneNumber: null,
-            deliveryHeader: ['접수번호', '접수일자', '접수시간', '수령인', '전화번호', '배송지', '품목', '수령 방법', '현재 상태'],
+            deliveryHeader: ['접수번호', '접수일자', '접수시간', '수령인', '전화번호', '배송지', '품목', '수령 방법', '접수 상태', '현재 상태'],
             deliveryList: [],
             status: 'hello'
         }
@@ -59,6 +59,7 @@ export default {
 
             result.data.forEach(function (value, index) {
                 if (value.id == $nuxt.$route.query.id) {
+                    console.log(value);
                     list.push({
                         // index: index + 1,
                         id: value.id,
@@ -69,6 +70,7 @@ export default {
                         destination: value.destination,
                         item: value.item,
                         isInPerson: value.isInPerson,
+                        isAccepted: value.isAccepted,
                         status: value.status
                     });
                 }
@@ -78,12 +80,12 @@ export default {
         });
     },
     methods: { opendoor() {
-        this.$axios.get('/control/opendoor').then(function (res) {
+        this.$axios.get(`/control/opendoor`).then(function (res) {
             console.log(res);
-            if (res.status == 200) {
+            if (res.data) {
                 alert('뚜껑을 열게요!');
             } else {
-                alert('실패했습니다.');
+                alert('뚜껑이 이미 열리고 있어요.');
             }
         }).catch(function (err) {
             alert('오류가 발생했습니다.');

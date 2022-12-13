@@ -1,29 +1,27 @@
 <template>
   <div class="index">
     <br>
-    <h1>ERIC-A</h1>
+    <h1>ERIC-A<br>관리자 페이지</h1>
+    <br>
     <div>
-      <br>
-      안녕하세요 배송 로봇 ERIC-A입니다!
-      <br>
-      <br>
       <div class="menu">
         메뉴
       </div>
     <ul>
-      <li @click="loginOrder">
+      <li @click="loginRobot">
         <button class="btn1">
-          배송 접수하기
+          로봇 관리하기
         </button>
       </li>
-      <li @click="loginTrack"><button class="btn1">배송 조회하기</button></li>
+      <li @click="loginList"><button class="btn1">접수 리스트</button></li>
+      <li @click="loginReqList"><button class="btn1">접수 요청 리스트</button></li>
     </ul>
 
       <div v-if="!isLogined">
         <br>
-        <span >이용을 원하시면 로그인해 주세요 😀</span>
+        <span >이용을 원하시면<br>관리자 계정으로 로그인해 주세요 😀</span>
         <br>
-        <a href="/user/signin">
+        <a href="/admin/signin">
           <button class="userbtn">
             이용하기 위해 로그인하기!
           </button>
@@ -89,24 +87,33 @@ export default {
         console.log(err);
       });
     },
-    async loginOrder() {
+    async loginRobot() {
       this.$axios.defaults.withCredentials = true
       let isLogined = await this.$axios.get('/user/checklogin');
       if (isLogined.data) {
-        $nuxt.$router.push('/delivery/order');
+        $nuxt.$router.push('/admin/robot');
       } else {
         alert('로그인이 필요합니다.');
       }
     },
-    async loginTrack() {
+    async loginList() {
       this.$axios.defaults.withCredentials = true
       let isLogined = await this.$axios.get('/user/checklogin');
       if (isLogined.data) {
-        $nuxt.$router.push(`/delivery/list/${this.userPhoneNumber}`);
+        $nuxt.$router.push(`/admin/list`);
       } else {
         alert('로그인이 필요합니다.');
       }
-    }
+    },
+    async loginReqList() {
+      this.$axios.defaults.withCredentials = true
+      let isLogined = await this.$axios.get('/user/checklogin');
+      if (isLogined.data) {
+        $nuxt.$router.push(`/admin/requestlist`);
+      } else {
+        alert('로그인이 필요합니다.');
+      }
+    },
   }
 }
 </script>
