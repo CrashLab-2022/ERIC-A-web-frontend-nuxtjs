@@ -35,9 +35,6 @@
           </button>
         </a>
         <br>
-        <button class="test" @click="test">
-          테스트
-        </button>
       </div>
     </div>
 
@@ -108,13 +105,6 @@ export default {
         $nuxt.$router.push(`/delivery/list/${this.userPhoneNumber}`);
       } else {
         alert('로그인이 필요합니다.');
-      }
-    },
-    async test() {
-      try {
-        this.$axios.get('/control/test');
-      } catch (err) {
-        console.log(err);
       }
     }
   }
