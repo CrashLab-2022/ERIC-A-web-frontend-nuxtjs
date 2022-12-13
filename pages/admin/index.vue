@@ -14,6 +14,7 @@
         </button>
       </li>
       <li @click="loginList"><button class="btn1">접수 리스트</button></li>
+      <li @click="loginReqList"><button class="btn1">접수 요청 리스트</button></li>
     </ul>
 
       <div v-if="!isLogined">
@@ -100,6 +101,15 @@ export default {
       let isLogined = await this.$axios.get('/user/checklogin');
       if (isLogined.data) {
         $nuxt.$router.push(`/admin/list`);
+      } else {
+        alert('로그인이 필요합니다.');
+      }
+    },
+    async loginReqList() {
+      this.$axios.defaults.withCredentials = true
+      let isLogined = await this.$axios.get('/user/checklogin');
+      if (isLogined.data) {
+        $nuxt.$router.push(`/admin/requestlist`);
       } else {
         alert('로그인이 필요합니다.');
       }

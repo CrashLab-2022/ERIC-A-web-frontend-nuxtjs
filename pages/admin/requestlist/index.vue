@@ -1,6 +1,6 @@
 <template>
     <div class="list">
-        <h3>접수 목록</h3>
+        <h3>접수 요청 목록</h3>
         <table>
             <thead>
             <th v-for ="index in deliveryHeader" v-bind:key="index">{{ index }}</th>
@@ -18,34 +18,39 @@
 export default {
     data() {
         return {
-            deliveryHeader: ['😀', '접수번호', '접수일자', '이름', '배송지', '품목', '현재 상태'],
-            deliveryList: []
+            deliveryHeader: ['🤖', '접수번호', '유저 아이디', '배송지', '품목', '상태'],
+            deliveryList: [],
+            userPhoneNumber: ''
         }
     },
     mounted() {
-
         this.$axios.get(`admin/list`).then(result => {
             console.log(result)
             const list = []
             result.data.forEach(function (value, index) {
-                list.push({
-                    index: index + 1,
-                    id: value.id,
-                    date: value.date,
-                    // time: value.time,
-                    name: value.name,
-                    // phoneNumber: value.phoneNumber,
-                    destination: value.destination,
-                    item: value.item,
-                    // isInPerson: value.isInPerson,
-                    status: value.status
+                console.log(value)
+                    list.push({
+                        index: index + 1,
+                        id: value.id,
+                        // date: value.date,
+                        // time: value.time,
+                        // name: value.name,
+                        phoneNumber: value.phoneNumber,
+                        destination: value.destination,
+                        item: value.item,
+                        // isInPerson: value.isInPerson,
+                        isAccepted: value.isAccepted,
+                        // status: value.status
+                    });                    
                 });
-            });
-            this.deliveryList = list        
+            this.deliveryList = list  
+            this.userPhoneNumber = this.userPhoneNumber     
         });
     },
     methods: {
-
+        viewDetail(ev, id) {
+            $nuxt.$router.push('/admin/requestlist/detail?phoneNumber=' + this.deliveryList[0].phoneNumber + "&id=" + id)
+        }
     }
 };
 </script>
