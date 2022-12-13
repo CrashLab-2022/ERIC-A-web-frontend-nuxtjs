@@ -18,16 +18,18 @@
     </table>
     <div id="info">
         <br>
-        <div v-if="this.isAccepted == '접수 완료'" @click="accept">접수 완료되었습니다.
-            <div class="btns">
+        <div v-if="this.status == '이동 중'">접수가 완료되어 접수지로 이동중입니다.</div>
+        <div v-else-if="this.status == '접수지 도착'">접수지에 도착했습니다.
+         <div class="btns">
                 <ul>
                     <li @click="open"><button class="btn1">열기</button></li>
                     <li @click="close"><button class="btn1">닫기</button></li>
                     <li @click="start"><button class="btn1">출발</button></li>
                 </ul>
-            </div>
-        </div>
-        <div v-else-if="this.status == '접수 거부'" @click="refuse">접수 거부되었습니다.</div>
+            </div></div>
+        <div v-else-if="this.status == '접수 거부'">접수 거부되었습니다.</div>
+        <div v-else-if="this.status == '배송 완료'">배송 완료되었습니다.</div>
+        <div v-else-if="this.status == '배송 출발'">배송 출발하였습니다.</div>
         <div v-else><ul class="btns">
       <li @click="accept"><button class="btn1">접수 수락</button></li>
       <li @click="refuse"><button class="btn1">접수 거절</button></li>
@@ -93,7 +95,7 @@ export default {
     },
     methods: {
         accept() {
-            this.$axios.post(`/admin/accept/${this.deliveryList[0].id}`).then(function (res) {
+            this.$axios.post(`/control/accept/${this.deliveryList[0].id}`).then(function (res) {
                 console.log(res);
                 if (res.data) {
                     // alert('접수를 수락했습니다.');
@@ -105,7 +107,7 @@ export default {
                 console.log(err);
             });
         }, refuse() {
-            this.$axios.post(`/admin/refuse/${this.deliveryList[0].id}`).then(function (res) {
+            this.$axios.post(`/control/refuse/${this.deliveryList[0].id}`).then(function (res) {
                 console.log(res);
                 if (res.data) {
                     // alert('접수를 거절했습니다.');
@@ -120,12 +122,12 @@ export default {
             this.$axios.get(`/control/adminopen`).then(function (res) {
                 console.log(res);
                 if (res.data) {
-                    // alert('뚜껑을 엽니다.');
+                    alert('뚜껑을 엽니다.');
                 } else {
-                    // alert('서버에서 오류가 발생했습니다.');
+                    alert('서버에서 오류가 발생했습니다.');
                 }
             }).catch(function (err) {
-                // alert('오류가 발생했습니다.');
+                alert('오류가 발생했습니다.');
                 console.log(err);
             });
         }, close() {
@@ -141,7 +143,7 @@ export default {
                 console.log(err);
             });
         }, start() {
-            this.$axios.get(`/control/adminstart`).then(function (res) {
+            this.$axios.get(`/control/adminstart/${this.deliveryList[0].id}`).then(function (res) {
                 console.log(res);
                 if (res.data) {
                     // alert('배송을 시작합니다.');
