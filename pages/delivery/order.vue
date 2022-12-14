@@ -225,4 +225,8 @@ select:focus{
     border-radius: 10px;
 }
 
+input {
+    width: 200px
+}
+
 </style>
