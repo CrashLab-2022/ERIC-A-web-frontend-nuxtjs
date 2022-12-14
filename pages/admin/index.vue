@@ -82,15 +82,6 @@ export default {
         console.log(err);
       });
     },
-    async loginRobot() {
-      this.$axios.defaults.withCredentials = true
-      let isLogined = await this.$axios.get('/user/checklogin');
-      if (isLogined.data) {
-        $nuxt.$router.push('/admin/robot');
-      } else {
-        alert('로그인이 필요합니다.');
-      }
-    },
     async loginList() {
       this.$axios.defaults.withCredentials = true
       let isLogined = await this.$axios.get('/user/checklogin');
