@@ -7,7 +7,7 @@
         </thead>
         <tbody>
             <tr v-for ="line in deliveryList" v-bind:key="line" > 
-            <td v-for ="d in line" v-bind:key="d" @click="viewDetail($event, line.id)">{{ d }}</td>
+            <td v-for ="d in line" v-bind:key="d" @click="viewDetail($event, line.id, line.phoneNumber)">{{ d }}</td>
             </tr>
         </tbody>
         </table>
@@ -25,7 +25,7 @@ export default {
     },
     mounted() {
         this.$axios.get(`admin/list`).then(result => {
-            console.log(result)
+            // console.log(result)
             const list = []
             result.data.forEach(function (value, index) {
                 console.log(value)
@@ -48,8 +48,8 @@ export default {
         });
     },
     methods: {
-        viewDetail(ev, id) {
-            $nuxt.$router.push('/admin/requestlist/detail?phoneNumber=' + this.deliveryList[0].phoneNumber + "&id=" + id)
+        viewDetail(ev, id, phoneNumber) {
+            $nuxt.$router.push('/admin/requestlist/detail?phoneNumber=' + phoneNumber + "&id=" + id)
         }
     }
 };

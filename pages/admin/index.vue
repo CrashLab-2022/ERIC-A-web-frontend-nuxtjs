@@ -8,11 +8,6 @@
         메뉴
       </div>
     <ul>
-      <li @click="loginRobot">
-        <button class="btn1">
-          로봇 관리하기
-        </button>
-      </li>
       <li @click="loginList"><button class="btn1">접수 리스트</button></li>
       <li @click="loginReqList"><button class="btn1">접수 요청 리스트</button></li>
     </ul>
@@ -86,15 +81,6 @@ export default {
       }).catch(function (err) {
         console.log(err);
       });
-    },
-    async loginRobot() {
-      this.$axios.defaults.withCredentials = true
-      let isLogined = await this.$axios.get('/user/checklogin');
-      if (isLogined.data) {
-        $nuxt.$router.push('/admin/robot');
-      } else {
-        alert('로그인이 필요합니다.');
-      }
     },
     async loginList() {
       this.$axios.defaults.withCredentials = true

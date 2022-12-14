@@ -41,7 +41,7 @@
                 <label for="isInPerson">수령 방법</label>
                 <select name = "isInPerson" id="isInPerson" v-model="isInPerson">
                     <option value="1">직접 수령하기</option>
-                    <option value="2">두고 가기</option>
+                    <option value="0">두고 가기</option>
                 </select>
             </div>
             <button type="submit">접수</button>
@@ -223,6 +223,10 @@ select:focus{
     border-radius: 15px;
     outline: 3px solid #eadba7;
     border-radius: 10px;
+}
+
+input {
+    width: 200px
 }
 
 </style>

@@ -19,8 +19,11 @@
     <div id="info">
         <!-- {{ status }} -->
         <p v-if="this.status == '배송 완료'">배송이 완료되었어요! <br></p>
-        <button v-else-if="this.status == '배송지 도착'" @click="opendoor">뚜껑 열기</button>
-        <p v-else>도착하면 뚜껑 열기 버튼이 생깁니다.<br>조금만 기다려 주세요!</p>
+        <button v-else-if="this.status == '배송지 도착'" @click="opendoor" class="btn1">뚜껑 열기</button>
+        <p v-else-if="this.status == '접수 중'">접수 중입니다.</p>
+        <p v-else-if="this.status == '접수 거부'">접수가 거부되었습니다.</p>
+        <p v-else-if="this.isInPerson != '직접 수령하기'">배송 중입니다. 배송지에 두고 갈게요!</p>
+        <p v-else>로봇이 도착하면 뚜껑 열기 버튼이 생깁니다.<br>조금만 기다려 주세요!</p>
     </div>
     </div>
 </template>
@@ -39,7 +42,8 @@ export default {
             userPhoneNumber: null,
             deliveryHeader: ['접수번호', '접수일자', '접수시간', '수령인', '전화번호', '배송지', '품목', '수령 방법', '접수 상태', '현재 상태'],
             deliveryList: [],
-            status: 'hello'
+            status: 'hello',
+            isInPerson: ''
         }
     },
     mounted() {
@@ -77,10 +81,11 @@ export default {
             });
             this.deliveryList = list     
             this.status = list[0]["status"]
+            this.isInPerson = list[0]["isInPerson"]
         });
     },
     methods: { opendoor() {
-        this.$axios.get(`/control/opendoor`).then(function (res) {
+        this.$axios.get(`/control/useropen`).then(function (res) {
             console.log(res);
             if (res.data) {
                 alert('뚜껑을 열게요!');
@@ -97,6 +102,22 @@ export default {
 </script>
 
 <style>
+    .btn1 {
+    margin: 9px;
+    padding: 10px 20px;
+    font-size: 15px;
+    border-radius: 10px;
+    background-color: #F0D264;
+    box-shadow: 0 6px rgba(196, 172, 83, .7);
+    text-decoration: none;
+    border-width: 0px;
+    }
+
+    .btn1:hover {
+    box-shadow: 0 0; 
+    margin-top: 15px;
+    background-color: #D6BB59;}
+    
     thead, tbody{
         display:inline-block;
     }
