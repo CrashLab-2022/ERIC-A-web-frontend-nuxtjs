@@ -19,6 +19,7 @@
     <div id="info">
         <br>
         <div v-if="this.status == '이동 중'">접수가 완료되어 접수지로 이동중입니다.</div>
+        <div v-else-if="this.status == '접수지로 출발'">접수가 완료되어 접수지로 이동중입니다.</div>
         <div v-else-if="this.status == '접수지 도착'">접수지에 도착했습니다.
          <div class="btns">
                 <ul>
