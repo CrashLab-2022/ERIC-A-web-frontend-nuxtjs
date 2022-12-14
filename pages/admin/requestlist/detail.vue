@@ -70,10 +70,8 @@ export default {
         
         let list = []
         this.$axios.get(`delivery/list/${this.phoneNumber}`).then(result => {
-
             result.data.forEach(function (value, index) {
                 if (value.id == $nuxt.$route.query.id) {
-                    console.log('value', value)
                     list.push({
                         // index: index + 1,
                         id: value.id,
@@ -99,24 +97,24 @@ export default {
             this.$axios.post(`/control/accept/${this.deliveryList[0].id}`).then(function (res) {
                 console.log(res);
                 if (res.data) {
-                    // alert('접수를 수락했습니다.');
+                    alert('접수를 수락했습니다.');
                 } else {
-                    // alert('서버에서 오류가 발생했습니다.');
+                    alert('서버에서 오류가 발생했습니다.');
                 }
             }).catch(function (err) {
-                // alert('오류가 발생했습니다.');
+                alert('오류가 발생했습니다.');
                 console.log(err);
             });
         }, refuse() {
             this.$axios.post(`/control/refuse/${this.deliveryList[0].id}`).then(function (res) {
                 console.log(res);
                 if (res.data) {
-                    // alert('접수를 거절했습니다.');
+                    alert('접수를 거절했습니다.');
                 } else {
-                    // alert('서버에서 오류가 발생했습니다.');
+                    alert('서버에서 오류가 발생했습니다.');
                 }
             }).catch(function (err) {
-                // alert('오류가 발생했습니다.');
+                alert('오류가 발생했습니다.');
                 console.log(err);
             });
         }, open() {
@@ -135,24 +133,24 @@ export default {
             this.$axios.get(`/control/adminclose`).then(function (res) {
                 console.log(res);
                 if (res.data) {
-                    // alert('뚜껑을 닫습니다.');
+                    alert('뚜껑을 닫습니다.');
                 } else {
-                    // alert('서버에서 오류가 발생했습니다.');
+                    alert('서버에서 오류가 발생했습니다.');
                 }
             }).catch(function (err) {
-                // alert('오류가 발생했습니다.');
+                alert('오류가 발생했습니다.');
                 console.log(err);
             });
         }, start() {
             this.$axios.get(`/control/adminstart/${this.deliveryList[0].id}`).then(function (res) {
                 console.log(res);
                 if (res.data) {
-                    // alert('배송을 시작합니다.');
+                    alert('배송을 시작합니다.');
                 } else {
-                    // alert('서버에서 오류가 발생했습니다.');
+                    alert('서버에서 오류가 발생했습니다.');
                 }
             }).catch(function (err) {
-                // alert('오류가 발생했습니다.');
+                alert('오류가 발생했습니다.');
                 console.log(err);
             }); 
         }
