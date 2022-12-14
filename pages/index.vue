@@ -10,15 +10,15 @@
       <div class="menu">
         메뉴
       </div>
-    <ul>
-      <li @click="loginOrder">
-        <button class="btn1">
-          배송 접수하기
-        </button>
-      </li>
-      <li @click="loginTrack"><button class="btn1">배송 조회하기</button></li>
-    </ul>
-
+      <ul>
+        <li @click="loginOrder">
+          <button class="btn1">
+            배송 접수하기
+          </button>
+        </li>
+        <li @click="loginTrack"><button class="btn1">배송 조회하기</button></li>
+      </ul>
+      
       <div v-if="!isLogined">
         <br>
         <span >이용을 원하시면 로그인해 주세요 😀</span>
@@ -37,7 +37,7 @@
         <br>
       </div>
     </div>
-
+    
     <div v-if="isLogined">
       <br>
       <div v-if="isLogined" >{{userName}}님 반갑습니다 😀</div>
@@ -45,7 +45,7 @@
       <div v-if="false">{{userPhoneNumber}}</div>
       <br>
     </div>
-
+    <img src="../assets/images/berry.png">
   </div>
 </template>;
 
@@ -138,6 +138,11 @@ export default {
     border-width: 1px;
     padding: 7px 12px;
     margin: 4px;
+}
+
+img {
+  padding-top: 0px;
+  width: 200px;
 }
 
 </style>
