@@ -80,7 +80,7 @@ export default {
         });
     },
     methods: { opendoor() {
-        this.$axios.get(`/control/opendoor`).then(function (res) {
+        this.$axios.get(`/control/useropen`).then(function (res) {
             console.log(res);
             if (res.data) {
                 alert('뚜껑을 열게요!');
