@@ -8,11 +8,6 @@
         메뉴
       </div>
     <ul>
-      <li @click="loginRobot">
-        <button class="btn1">
-          로봇 관리하기
-        </button>
-      </li>
       <li @click="loginList"><button class="btn1">접수 리스트</button></li>
       <li @click="loginReqList"><button class="btn1">접수 요청 리스트</button></li>
     </ul>
