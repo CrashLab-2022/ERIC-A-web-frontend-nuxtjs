@@ -19,7 +19,7 @@
     <div id="info">
         <!-- {{ status }} -->
         <p v-if="this.status == '배송 완료'">배송이 완료되었어요! <br></p>
-        <button v-else-if="this.status == '배송지 도착'" @click="opendoor">뚜껑 열기</button>
+        <button v-else-if="this.status == '배송지 도착'" @click="opendoor" class="btn">뚜껑 열기</button>
         <p v-else>도착하면 뚜껑 열기 버튼이 생깁니다.<br>조금만 기다려 주세요!</p>
     </div>
     </div>
@@ -97,6 +97,22 @@ export default {
 </script>
 
 <style>
+    .btn1 {
+    margin: 9px;
+    padding: 10px 20px;
+    font-size: 15px;
+    border-radius: 10px;
+    background-color: #F0D264;
+    box-shadow: 0 6px rgba(196, 172, 83, .7);
+    text-decoration: none;
+    border-width: 0px;
+    }
+
+    .btn1:hover {
+    box-shadow: 0 0; 
+    margin-top: 15px;
+    background-color: #D6BB59;}
+
     thead, tbody{
         display:inline-block;
     }
