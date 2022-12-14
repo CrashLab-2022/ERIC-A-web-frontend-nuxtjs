@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/admin/robot", {data:[{}],fetch:{},mutations:void 0});

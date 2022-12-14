@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/admin/requestlist", {data:[{}],fetch:{},mutations:void 0});
