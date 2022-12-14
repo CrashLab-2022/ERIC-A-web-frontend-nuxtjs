@@ -1,6 +1,6 @@
 <template>
     <div class="list">
-        <h3>접수 요청 목록</h3>
+        <h3>접수 완료 목록</h3>
         <table>
             <thead>
             <th v-for ="index in deliveryHeader" v-bind:key="index">{{ index }}</th>
