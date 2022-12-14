@@ -20,7 +20,7 @@
         <!-- {{ status }} -->
         <p v-if="this.status == '배송 완료'">배송이 완료되었어요! <br></p>
         <button v-else-if="this.status == '배송지 도착'" @click="opendoor" class="btn1">뚜껑 열기</button>
-        <button v-else-if="this.status == '접수 중'" @click="opendoor">접수 중입니다.</button>
+        <p v-else-if="this.status == '접수 중'">접수 중입니다.</p>
         <p v-else>도착하면 뚜껑 열기 버튼이 생깁니다.<br>조금만 기다려 주세요!</p>
     </div>
     </div>
