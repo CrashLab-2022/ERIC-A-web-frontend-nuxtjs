@@ -18,8 +18,7 @@
     </table>
     <div id="info">
         <br>
-        <div v-if="this.status == '이동 중'">접수가 완료되어 접수지로 이동중입니다.</div>
-        <div v-else-if="this.status == '접수지로 출발'">접수가 완료되어 접수지로 이동중입니다.</div>
+        <div v-if="this.status == '접수지로 출발'">접수가 완료되어 접수지로 이동중입니다.</div>
         <div v-else-if="this.status == '접수지 도착'">접수지에 도착했습니다.
          <div class="btns">
                 <ul>
@@ -29,6 +28,7 @@
                 </ul>
             </div></div>
         <div v-else-if="this.status == '접수 거부'">접수 거부되었습니다.</div>
+        <div v-else-if="this.status == '배송지 도착'">배송지에 도착했습니다.</div>
         <div v-else-if="this.status == '배송 완료'">배송 완료되었습니다.</div>
         <div v-else-if="this.status == '배송 출발'">배송 출발하였습니다.</div>
         <div v-else><ul class="btns">
