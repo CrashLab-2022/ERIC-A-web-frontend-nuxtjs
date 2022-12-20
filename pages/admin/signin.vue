@@ -1,7 +1,7 @@
 <template>
     <div class="login">
         <Header />
-        <h3>로그인</h3>
+        <h3>관리자 로그인</h3>
         <form @submit.prevent="submitForm">
             <div class="id">
                 <label for="phoneNumber">전화번호</label>
@@ -36,11 +36,11 @@ export default {
                 password: this.password,
             };
             this.$axios.defaults.withCredentials = true
-            this.$axios.post('/user/signin', userData)
+            this.$axios.post('/admin/signin', userData)
                 .then(function (res) {
-                    console.log(res.data);
+                    console.log(res);
                     if (res.data) {
-                        $nuxt.$router.push('/');
+                        $nuxt.$router.push('/admin');
                     }
                     else {
                         alert('아이디와 비밀번호를 확인해 주세요.');

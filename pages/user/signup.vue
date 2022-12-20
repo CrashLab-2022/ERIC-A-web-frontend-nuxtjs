@@ -1,14 +1,17 @@
 <template>
-    <div class="container">
+    <div class="signup">
+        <Header />
+        <h3>회원가입</h3>
         <form @submit.prevent="submitForm">
             <div>
                 <label for="name">이름</label>
                 <input type="text" id="name" v-model="name" />
             </div>
             <div>
-                <label for="phoneNumber">전화번호(id로 사용됩니다)</label>
-                <input type="text" id="phoneNumber" v-model="phoneNumber" maxlength="11" placeholder="-를 제외하고 입력해 주세요."/>
-                    <button @click.self.prevent="checkPhoneNumber">체크</button>
+                <label for="phoneNumber">전화번호</label>
+                <input type="text" id="phoneNumber" v-model="phoneNumber" maxlength="11" placeholder="-를 제외하고 입력해 주세요."/><br>
+                {{ checkPhoneNumberText }}<br>
+                    <button @click.self.prevent="checkPhoneNumber" class="checkPN">전화번호 중복체크</button>
             </div>
             <div>
                 <label for="password">비밀번호</label>
@@ -26,9 +29,11 @@
 </template>
 
 <script>
-import { callbackify } from 'util';
-
+import Header from '../../components/Header2';
 export default {
+    components: {
+        Header
+    },
     name: 'SignupForm',
     data() {
         return {
@@ -36,6 +41,7 @@ export default {
             phoneNumber: null,
             password: '',
             passwordConfirm: '',
+            checkPhoneNumberText: '전화번호 중복체크 미완료'
         };
     },
     watch: {
@@ -46,10 +52,15 @@ export default {
     methods: {
         async checkPhoneNumber() {
             try {
-                let response = await this.$axios.get(`https://eric-a-baegayeon.koyeb.app/user/signup/checkphone/${this.phoneNumber}`)
+                if (this.phoneNumber == null) {
+                    alert('전화번호를 입력해 주세요.');
+                    return 0;
+                }
+                let response = await this.$axios.get(`user/signup/checkphone/${this.phoneNumber}`)
                 console.log(response)
                 if (response.data.res == true) {
                     alert('사용 가능한 전화번호입니다.');
+                    this.checkPhoneNumberText = '전화번호 중복체크 완료'
                     return 1;
                     } else {
                     alert('이미 사용 중인 전화번호입니다.');
@@ -61,7 +72,7 @@ export default {
         },
         async isPhoneNumberAvailable() {
             try {
-                let response = await this.$axios.get(`https://eric-a-baegayeon.koyeb.app/user/signup/checkphone/${this.phoneNumber}`);
+                let response = await this.$axios.get(`user/signup/checkphone/${this.phoneNumber}`);
                 if (response.data.res == true) {
                     return 1;
                     } else {
@@ -122,4 +133,46 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+
+.signup label {
+    display: inline-block;
+    width: 100px;
+}
+
+.signup input {
+    width: 190px;
+  font-size: 15px;
+  border: 0;
+  border-radius: 15px;
+  margin: 5px;
+  margin-left: 7px;
+  outline: none;
+  padding: 5px;
+  background-color: rgb(255, 255, 255);
+}
+
+.signup h3 {
+    margin-bottom: 10px;
+}
+
+.signup button {
+  margin: 10px;
+  margin-bottom: 15px;
+  margin-top: 7px;
+  padding: 5px 20px;
+  font-size: 15px;
+  border-radius: 10px;
+  background-color: #F0D264;
+  box-shadow: 0 6px rgba(196, 172, 83, .7);
+  text-decoration: none;
+  border-width: 0px;
+}
+
+.signup button:hover {
+  box-shadow: 0 0; 
+  margin-top: 15px;
+  background-color: #D6BB59;
+}
+
+</style>
