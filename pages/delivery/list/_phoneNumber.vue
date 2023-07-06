@@ -50,10 +50,9 @@ export default {
             }
         });
         
-        this.$axios.get(`delivery/list/${this.phoneNumber}`).then(result => {
-            console.log(result)
+        this.$axios.get(`delivery/list/${this.phoneNumber}`).then(response => {
             const list = []
-            result.data.forEach(function (value, index) {
+            response.data.result.forEach(function (value, index) {
                 list.push({
                     index: index + 1,
                     id: value.id,

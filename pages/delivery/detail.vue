@@ -58,11 +58,10 @@ export default {
             }
         });
         
-        this.$axios.get(`delivery/list/${this.phoneNumber}`).then(result => {
+        this.$axios.get(`delivery/list/${this.phoneNumber}`).then(response => {
             let list = []
-                    console.log($nuxt.$route.query.id)
-
-            result.data.forEach(function (value, index) {
+            // console.log($nuxt.$route.query.id)
+            response.data.result.forEach(function (value, index) {
                 if (value.id == $nuxt.$route.query.id) {
                     console.log(value);
                     list.push({
