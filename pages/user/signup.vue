@@ -57,7 +57,6 @@ export default {
                     return 0;
                 }
                 let response = await this.$axios.get(`user/signup/checkphone/${this.phoneNumber}`)
-                console.log(response)
                 if (response.data.res == true) {
                     alert('사용 가능한 전화번호입니다.');
                     this.checkPhoneNumberText = '전화번호 중복체크 완료'
@@ -111,7 +110,6 @@ export default {
             if (this.isPasswordEqual() == 1 && await this.isPhoneNumberAvailable() == 1) {
                 this.$axios.post('/user/signup', userData)
                 .then(function (res) {
-                    console.log(res);
                     if (res.status == 200) {
                         alert('회원 가입 완료되었습니다.');
                         $nuxt.$router.push('/');

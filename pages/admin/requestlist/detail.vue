@@ -95,7 +95,6 @@ export default {
     methods: {
         accept() {
             this.$axios.post(`/control/accept/${this.deliveryList[0].id}`).then(function (res) {
-                console.log(res);
                 if (res.data) {
                     alert('접수를 수락했습니다.');
                 } else {
@@ -107,7 +106,6 @@ export default {
             });
         }, refuse() {
             this.$axios.post(`/control/refuse/${this.deliveryList[0].id}`).then(function (res) {
-                console.log(res);
                 if (res.data) {
                     alert('접수를 거절했습니다.');
                 } else {
@@ -119,7 +117,6 @@ export default {
             });
         }, open() {
             this.$axios.get(`/control/adminopen`).then(function (res) {
-                console.log(res);
                 if (res.data) {
                     alert('뚜껑을 엽니다.');
                 } else {
@@ -131,7 +128,6 @@ export default {
             });
         }, close() {
             this.$axios.get(`/control/adminclose`).then(function (res) {
-                console.log(res);
                 if (res.data) {
                     alert('뚜껑을 닫습니다.');
                 } else {
@@ -143,7 +139,6 @@ export default {
             });
         }, start() {
             this.$axios.get(`/control/adminstart/${this.deliveryList[0].id}`).then(function (res) {
-                console.log(res);
                 if (res.data) {
                     alert('배송을 시작합니다.');
                 } else {

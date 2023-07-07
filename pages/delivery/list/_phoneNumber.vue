@@ -71,8 +71,6 @@ export default {
     },
     methods: {
         viewDetail(ev, id) {
-            console.log(this.deliveryList[0].id)
-            console.log(this.userPhoneNumber)
             $nuxt.$router.push('/delivery/detail?phoneNumber=' + this.$route.params.phoneNumber + "&id=" + id)
         }
     }

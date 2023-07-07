@@ -50,7 +50,6 @@ export default {
     mounted() {
         this.$axios.get(`delivery/list/${this.phoneNumber}`).then(response => {
             let list = []
-            // console.log($nuxt.$route.query.id)
             if (response.data.code == 2000) {
                 alert('잘못된 접근입니다.')
                 this.$router.push('/');
@@ -58,7 +57,6 @@ export default {
             else if (response.data.code == 1000) {
                 response.data.result.forEach(function (value, index) {
                     if (value.id == $nuxt.$route.query.id) {
-                        console.log(value);
                         list.push({
                             // index: index + 1,
                             id: value.id,
@@ -86,7 +84,6 @@ export default {
     },
     methods: { opendoor() {
         this.$axios.get(`/control/useropen`).then(function (res) {
-            console.log(res);
             if (res.data) {
                 alert('뚜껑을 열게요!');
             } else {

@@ -76,7 +76,7 @@ export default {
           alert('로그아웃 되었습니다.');
           $nuxt.$router.go();
         } else {
-          console.log('로그아웃 실패')
+          alert('로그아웃 실패.');
         }
       }).catch(function (err) {
         console.log(err);
