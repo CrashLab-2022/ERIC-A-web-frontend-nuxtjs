@@ -40,40 +40,40 @@ export default {
         }
     },
     mounted() {
-
-        this.$axios.get('/user/session').then(result => {
-            this.name = result.data.name
-            this.userPhoneNumber = result.data.phoneNumber
-            if (this.phoneNumber != this.userPhoneNumber) {
+        this.$axios.get(`delivery/list/${this.phoneNumber}`).then(response => {
+            const list = []
+            if (response.data.code == 2000) {
                 alert('잘못된 접근입니다.')
                 this.$router.push('/');
             }
-        });
-        
-        this.$axios.get(`delivery/list/${this.phoneNumber}`).then(response => {
-            const list = []
-            response.data.result.forEach(function (value, index) {
-                list.push({
-                    index: index + 1,
-                    id: value.id,
-                    date: value.date,
-                    // time: value.time,
-                    // name: value.name,
-                    // phoneNumber: value.phoneNumber,
-                    // destination: value.destination,
-                    item: value.item,
-                    // isInPerson: value.isInPerson,
-                    status: value.status
+            else if (response.data.code == 1000) {
+                response.data.result.forEach(function (value, index) {
+                    list.push({
+                        index: index + 1,
+                        id: value.id,
+                        date: value.date,
+                        // time: value.time,
+                        // name: value.name,
+                        // phoneNumber: value.phoneNumber,
+                        // destination: value.destination,
+                        item: value.item,
+                        // isInPerson: value.isInPerson,
+                        status: value.status
+                    });
                 });
-            });
-            this.deliveryList = list        
+                this.deliveryList = list
+            }
+            else {
+                alert('오류가 발생했습니다.')
+                this.$router.push('/')
+            }      
         });
     },
     methods: {
         viewDetail(ev, id) {
             console.log(this.deliveryList[0].id)
             console.log(this.userPhoneNumber)
-            $nuxt.$router.push('/delivery/detail?phoneNumber=' + this.userPhoneNumber + "&id=" + id)
+            $nuxt.$router.push('/delivery/detail?phoneNumber=' + this.$route.params.phoneNumber + "&id=" + id)
         }
     }
 };
