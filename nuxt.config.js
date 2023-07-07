@@ -48,15 +48,7 @@ export default {
   // modules: ['@nuxtjs/proxy'],
 
   axios: {
-    // baseURL: 'http://eric-a-baegayeon.koyeb.app:3001',
-    // baseURL: '/api/',
-    // proxy: true,
-    // baseURL: 'https://genuine-salamander-326058.netlify.app',
-    // baseURL: 'http://localhost:3001',
-    // baseURL: 'https://eric-a-server.herokuapp.com',
-    // baseURL: 'http://35.73.220.254:3000',
-    baseURL: 'http://api.bbbae.shop:3000',
-    // baseURL: 'http://api.eric-a.shop:3000',
+    baseURL: 'http://localhost:3001',
     withCredentials: true,
     // proxy: true,
   },
