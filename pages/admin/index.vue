@@ -22,7 +22,7 @@
           </button>
         </a>
         <br>
-        <a href="/user/signup">
+        <a href="/admin/signup">
           <button class="userbtn">
             이용하기 위해 회원가입하기!
           </button>
