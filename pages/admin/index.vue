@@ -53,7 +53,7 @@ export default {
   },
   created() {
     this.$axios.defaults.withCredentials = true
-    this.$axios.get('/user/checklogin').then(result => {
+    this.$axios.get('/admin/checklogin').then(result => {
       if (result.data) {
         this.isLogined = true
       } else {
@@ -62,9 +62,9 @@ export default {
     });
   },
   mounted() {
-    this.$axios.get('/user/session').then(result => {
-            this.userName = result.data.name
-            this.userPhoneNumber = result.data.phoneNumber
+    this.$axios.get('/admin/session').then(result => {
+        this.userName = result.data.name
+        this.userPhoneNumber = result.data.phoneNumber
         });
   },
   methods: {
