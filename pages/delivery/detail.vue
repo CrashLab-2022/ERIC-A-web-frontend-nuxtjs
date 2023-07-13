@@ -48,46 +48,42 @@ export default {
         }
     },
     mounted() {
-
-        this.$axios.get('/user/session').then(result => {
-            this.name = result.data.name
-            this.userPhoneNumber = result.data.phoneNumber
-            if (this.phoneNumber != this.userPhoneNumber) {
+        this.$axios.get(`delivery/list/${this.phoneNumber}`).then(response => {
+            let list = []
+            if (response.data.code == 2000) {
                 alert('잘못된 접근입니다.')
                 this.$router.push('/');
             }
-        });
-        
-        this.$axios.get(`delivery/list/${this.phoneNumber}`).then(result => {
-            let list = []
-                    console.log($nuxt.$route.query.id)
-
-            result.data.forEach(function (value, index) {
-                if (value.id == $nuxt.$route.query.id) {
-                    console.log(value);
-                    list.push({
-                        // index: index + 1,
-                        id: value.id,
-                        date: value.date,
-                        time: value.time,
-                        name: value.name,
-                        phoneNumber: value.phoneNumber,
-                        destination: value.destination,
-                        item: value.item,
-                        isInPerson: value.isInPerson,
-                        isAccepted: value.isAccepted,
-                        status: value.status
-                    });
-                }
-            });
-            this.deliveryList = list     
-            this.status = list[0]["status"]
-            this.isInPerson = list[0]["isInPerson"]
+            else if (response.data.code == 1000) {
+                response.data.result.forEach(function (value, index) {
+                    if (value.id == $nuxt.$route.query.id) {
+                        list.push({
+                            // index: index + 1,
+                            id: value.id,
+                            date: value.date,
+                            time: value.time,
+                            name: value.name,
+                            phoneNumber: value.phoneNumber,
+                            destination: value.destination,
+                            item: value.item,
+                            isInPerson: value.isInPerson,
+                            isAccepted: value.isAccepted,
+                            status: value.status
+                        });
+                    }
+                });
+                this.deliveryList = list
+                this.status = list[0]["status"]
+                this.isInPerson = list[0]["isInPerson"]
+            }
+            else {
+                alert('오류가 발생했습니다.')
+                this.$router.push('/')
+            }
         });
     },
     methods: { opendoor() {
         this.$axios.get(`/control/useropen`).then(function (res) {
-            console.log(res);
             if (res.data) {
                 alert('뚜껑을 열게요!');
             } else {

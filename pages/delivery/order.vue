@@ -57,7 +57,6 @@ export default {
     },
     mounted() {
         this.$axios.get('/user/session').then(result => {
-            console.log(result.data)
             this.userPhoneNumber = result.data.phoneNumber
         });
     },

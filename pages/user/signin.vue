@@ -38,7 +38,6 @@ export default {
             this.$axios.defaults.withCredentials = true
             this.$axios.post('/user/signin', userData)
                 .then(function (res) {
-                    console.log(res.data);
                     if (res.data) {
                         $nuxt.$router.push('/');
                     }

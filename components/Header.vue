@@ -46,10 +46,8 @@ export default {
                 .then(function (res) {
                     if (res.data) {
                         alert('로그아웃 되었습니다.');
-                        console.log('로그아웃 성공');
                         $nuxt.$router.push('/');
                     } else {
-                        console.log('로그아웃 실패')
                     }
                 }).catch(function (err) {
                     console.log(err);

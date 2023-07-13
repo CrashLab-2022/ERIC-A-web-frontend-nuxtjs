@@ -25,7 +25,6 @@ export default {
     },
     mounted() {
         this.$axios.get(`admin/list`).then(result => {
-            // console.log(result)
             const list = []
             result.data.forEach(function (value, index) {
                 console.log(value)
