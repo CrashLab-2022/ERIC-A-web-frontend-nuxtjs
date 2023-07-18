@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <Header />
+        <AdminHeader />
         <h3>접수 요청 상세보기</h3>
         <div>
             <!-- {{ name }}님의 접수 내역 -->
@@ -40,11 +40,11 @@
 </template>
 
 <script>
-import Header from '../../../components/Header';
+import AdminHeader from '../../../components/AdminHeader.vue';
 export default {
     components: {
-        Header
-    },
+          AdminHeader
+      },
     data() {
         return {
             name: null,

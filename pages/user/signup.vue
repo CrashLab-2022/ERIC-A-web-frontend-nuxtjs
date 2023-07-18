@@ -108,6 +108,7 @@ export default {
                 password: this.password,
             };
             if (this.isPasswordEqual() == 1 && await this.isPhoneNumberAvailable() == 1) {
+                this.$axios.defaults.withCredentials = true
                 this.$axios.post('/user/signup', userData)
                 .then(function (res) {
                     if (res.status == 200) {

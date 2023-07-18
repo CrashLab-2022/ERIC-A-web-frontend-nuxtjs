@@ -1,5 +1,6 @@
 <template>
     <div class="list">
+        <AdminHeader />
         <h3>접수 완료 목록</h3>
         <table>
             <thead>
@@ -15,7 +16,11 @@
 </template>
 
 <script>
+import AdminHeader from '../../../components/AdminHeader.vue';
 export default {
+    components: {
+          AdminHeader
+      },
     data() {
         return {
             deliveryHeader: ['🤖', '접수번호', '유저 아이디', '배송지', '품목', '상태'],
