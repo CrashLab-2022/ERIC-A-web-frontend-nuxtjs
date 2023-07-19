@@ -69,8 +69,8 @@ export default {
         // });
         
         let list = []
-        this.$axios.get(`delivery/list/${this.phoneNumber}`).then(result => {
-            result.data.forEach(function (value, index) {
+        this.$axios.get(`delivery/list/${this.phoneNumber}`).then(response => {
+            response.data.result.forEach(function (value, index) {
                 if (value.id == $nuxt.$route.query.id) {
                     list.push({
                         // index: index + 1,

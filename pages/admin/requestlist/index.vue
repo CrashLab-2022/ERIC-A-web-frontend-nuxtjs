@@ -29,9 +29,9 @@ export default {
         }
     },
     mounted() {
-        this.$axios.get(`admin/list`).then(result => {
+        this.$axios.get(`admin/list`).then(response => {
             const list = []
-            result.data.forEach(function (value, index) {
+            response.data.result.forEach(function (value, index) {
                 console.log(value)
                     list.push({
                         index: index + 1,
