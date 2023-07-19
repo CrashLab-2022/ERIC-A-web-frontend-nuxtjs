@@ -32,7 +32,6 @@ export default {
         this.$axios.get(`admin/list`).then(response => {
             const list = []
             response.data.result.forEach(function (value, index) {
-                console.log(value)
                     list.push({
                         index: index + 1,
                         id: value.id,
