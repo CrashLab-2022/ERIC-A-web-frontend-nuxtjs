@@ -104,7 +104,6 @@ export default {
             };
             this.$axios.post('/delivery/order', userData)
             .then(function (res) {
-                console.log(res);
                 if (res.status == 200) {
                     alert('접수되었습니다.');
                     $nuxt.$router.push(`/delivery/list/${userData.userId}`)

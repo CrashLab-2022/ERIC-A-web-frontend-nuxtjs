@@ -25,7 +25,6 @@ export default {
     created() {
         this.$axios.defaults.withCredentials = true
         this.$axios.get('/admin/checklogin', false).then(result => {
-            console.log(result)
             if (result.data) {
                 this.isLogined = true
             } else {
